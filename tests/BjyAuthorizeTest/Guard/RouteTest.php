@@ -10,7 +10,7 @@ namespace BjyAuthorizeTest\Guard;
 
 use PHPUnit_Framework_TestCase;
 use BjyAuthorize\Guard\Route;
-use Zend\Mvc\MvcEvent;
+use Laminas\Mvc\MvcEvent;
 
 /**
  * Route Guard test
@@ -20,7 +20,7 @@ use Zend\Mvc\MvcEvent;
 class RouteTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend\ServiceManager\ServiceLocatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\ServiceManager\ServiceLocatorInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $serviceLocator;
 
@@ -43,7 +43,7 @@ class RouteTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->serviceLocator = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $this->serviceLocator = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
         $this->authorize = $authorize = $this->getMock('BjyAuthorize\\Service\\Authorize', array(), array(), '', false);
         $this->routeGuard = new Route(array(), $this->serviceLocator);
 
@@ -61,8 +61,8 @@ class RouteTest extends PHPUnit_Framework_TestCase
      */
     public function testAttachDetach()
     {
-        $eventManager = $this->getMock('Zend\\EventManager\\EventManagerInterface');
-        $callbackMock = $this->getMock('Zend\\Stdlib\\CallbackHandler', array(), array(), '', false);
+        $eventManager = $this->getMock('Laminas\\EventManager\\EventManagerInterface');
+        $callbackMock = $this->getMock('Laminas\\Stdlib\\CallbackHandler', array(), array(), '', false);
         $eventManager
             ->expects($this->once())
             ->method('attach')
@@ -217,15 +217,15 @@ class RouteTest extends PHPUnit_Framework_TestCase
     /**
      * @param string|null $route
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Zend\Mvc\MvcEvent
+     * @return \PHPUnit_Framework_MockObject_MockObject|\Laminas\Mvc\MvcEvent
      */
     private function createMvcEvent($route = null)
     {
-        $eventManager = $this->getMock('Zend\\EventManager\\EventManagerInterface');
-        $application  = $this->getMock('Zend\\Mvc\\Application', array(), array(), '', false);
-        $event        = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
-        $request      = $this->getMock('Zend\\Http\\Request');
+        $eventManager = $this->getMock('Laminas\\EventManager\\EventManagerInterface');
+        $application  = $this->getMock('Laminas\\Mvc\\Application', array(), array(), '', false);
+        $event        = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $request      = $this->getMock('Laminas\\Http\\Request');
 
         $event->expects($this->any())->method('getRouteMatch')->will($this->returnValue($routeMatch));
         $event->expects($this->any())->method('getRequest')->will($this->returnValue($request));

@@ -8,13 +8,13 @@
 
 namespace BjyAuthorize;
 
-use Zend\EventManager\EventInterface;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\BootstrapListenerInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ControllerPluginProviderInterface;
-use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
-use Zend\ServiceManager\AbstractPluginManager;
+use Laminas\EventManager\EventInterface;
+use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
+use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\ModuleManager\Feature\ControllerPluginProviderInterface;
+use Laminas\ModuleManager\Feature\ViewHelperProviderInterface;
+use Laminas\ServiceManager\AbstractPluginManager;
 
 /**
  * BjyAuthorize Module
@@ -33,9 +33,9 @@ class Module implements
      */
     public function onBootstrap(EventInterface $event)
     {
-        /* @var $app \Zend\Mvc\ApplicationInterface */
+        /* @var $app \Laminas\Mvc\ApplicationInterface */
         $app            = $event->getTarget();
-        /* @var $sm \Zend\ServiceManager\ServiceLocatorInterface */
+        /* @var $sm \Laminas\ServiceManager\ServiceLocatorInterface */
         $serviceManager = $app->getServiceManager();
         $config         = $serviceManager->get('BjyAuthorize\Config');
         $strategy       = $serviceManager->get($config['unauthorized_strategy']);
@@ -90,7 +90,7 @@ class Module implements
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/../../src/' . __NAMESPACE__,
                 ),

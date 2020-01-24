@@ -10,9 +10,9 @@ namespace BjyAuthorizeTest\View;
 
 use PHPUnit_Framework_TestCase;
 use BjyAuthorize\View\UnauthorizedStrategy;
-use Zend\Http\Response;
-use Zend\Mvc\Application;
-use Zend\View\Model\ModelInterface;
+use Laminas\Http\Response;
+use Laminas\Mvc\Application;
+use Laminas\View\Model\ModelInterface;
 
 /**
  * UnauthorizedStrategyTest view strategy test
@@ -44,8 +44,8 @@ class UnauthorizedStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testAttachDetach()
     {
-        $eventManager = $this->getMock('Zend\\EventManager\\EventManagerInterface');
-        $callbackMock = $this->getMock('Zend\\Stdlib\\CallbackHandler', array(), array(), '', false);
+        $eventManager = $this->getMock('Laminas\\EventManager\\EventManagerInterface');
+        $callbackMock = $this->getMock('Laminas\\Stdlib\\CallbackHandler', array(), array(), '', false);
         $eventManager
             ->expects($this->once())
             ->method('attach')
@@ -77,8 +77,8 @@ class UnauthorizedStrategyTest extends PHPUnit_Framework_TestCase
     public function testOnDispatchErrorWithGenericUnAuthorizedException()
     {
         $exception = $this->getMock('BjyAuthorize\\Exception\\UnAuthorizedException');
-        $viewModel = $this->getMock('Zend\\View\\Model\\ModelInterface');
-        $mvcEvent  = $this->getMock('Zend\\Mvc\\MvcEvent');
+        $viewModel = $this->getMock('Laminas\\View\\Model\\ModelInterface');
+        $mvcEvent  = $this->getMock('Laminas\\Mvc\\MvcEvent');
 
         $mvcEvent->expects($this->any())->method('getError')->will($this->returnValue(Application::ERROR_EXCEPTION));
         $mvcEvent->expects($this->any())->method('getViewModel')->will($this->returnValue($viewModel));
@@ -131,8 +131,8 @@ class UnauthorizedStrategyTest extends PHPUnit_Framework_TestCase
     public function testIgnoresUnknownExceptions()
     {
         $exception = $this->getMock('Exception');
-        $viewModel = $this->getMock('Zend\\View\\Model\\ModelInterface');
-        $mvcEvent  = $this->getMock('Zend\\Mvc\\MvcEvent');
+        $viewModel = $this->getMock('Laminas\\View\\Model\\ModelInterface');
+        $mvcEvent  = $this->getMock('Laminas\\Mvc\\MvcEvent');
 
         $mvcEvent->expects($this->any())->method('getError')->will($this->returnValue(Application::ERROR_EXCEPTION));
         $mvcEvent->expects($this->any())->method('getViewModel')->will($this->returnValue($viewModel));
@@ -158,8 +158,8 @@ class UnauthorizedStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testIgnoresUnknownErrors()
     {
-        $viewModel = $this->getMock('Zend\\View\\Model\\ModelInterface');
-        $mvcEvent  = $this->getMock('Zend\\Mvc\\MvcEvent');
+        $viewModel = $this->getMock('Laminas\\View\\Model\\ModelInterface');
+        $mvcEvent  = $this->getMock('Laminas\\Mvc\\MvcEvent');
 
         $mvcEvent->expects($this->any())->method('getError')->will($this->returnValue('unknown'));
         $mvcEvent->expects($this->any())->method('getViewModel')->will($this->returnValue($viewModel));
@@ -175,9 +175,9 @@ class UnauthorizedStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testIgnoresOnExistingResponse()
     {
-        $response = $this->getMock('Zend\\Stdlib\\ResponseInterface');
-        $viewModel = $this->getMock('Zend\\View\\Model\\ModelInterface');
-        $mvcEvent  = $this->getMock('Zend\\Mvc\\MvcEvent');
+        $response = $this->getMock('Laminas\\Stdlib\\ResponseInterface');
+        $viewModel = $this->getMock('Laminas\\View\\Model\\ModelInterface');
+        $mvcEvent  = $this->getMock('Laminas\\Mvc\\MvcEvent');
 
         $mvcEvent->expects($this->any())->method('getResult')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getViewModel')->will($this->returnValue($viewModel));

@@ -8,10 +8,10 @@
 
 namespace BjyAuthorize\Service;
 
-use Zend\Cache\Storage\StorageInterface;
-use Zend\Cache\StorageFactory;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\Cache\Storage\StorageInterface;
+use Laminas\Cache\StorageFactory;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Factory for building the cache storage

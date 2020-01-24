@@ -10,8 +10,8 @@
 
 namespace BjyAuthorize\Service;
 
-use Zend\ServiceManager\InitializerInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\InitializerInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Initializer that injects a {@see \BjyAuthorize\Service\Authorize} in

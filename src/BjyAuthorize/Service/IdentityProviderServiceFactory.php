@@ -8,8 +8,8 @@
 
 namespace BjyAuthorize\Service;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Factory responsible of building {@see \BjyAuthorize\Provider\Identity\ProviderInterface}

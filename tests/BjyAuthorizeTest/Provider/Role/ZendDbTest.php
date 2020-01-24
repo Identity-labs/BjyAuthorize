@@ -25,12 +25,12 @@ class ZendDbTest extends PHPUnit_Framework_TestCase
     private $provider;
 
     /**
-     * @var \Zend\ServiceManager\ServiceLocatorInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\ServiceManager\ServiceLocatorInterface|\PHPUnit_Framework_MockObject_MockObject
      */
     private $serviceLocator;
     
     /**
-     * @var \Zend\Db\TableGateway\TableGateway|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\Db\TableGateway\TableGateway|\PHPUnit_Framework_MockObject_MockObject
      */
     private $tableGateway;
 
@@ -39,9 +39,9 @@ class ZendDbTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->serviceLocator = $this->getMock('Zend\ServiceManager\ServiceLocatorInterface');
+        $this->serviceLocator = $this->getMock('Laminas\ServiceManager\ServiceLocatorInterface');
         $this->provider       = new ZendDb(array(), $this->serviceLocator);
-        $this->tableGateway   = $this->getMockBuilder('Zend\Db\TableGateway\TableGateway')
+        $this->tableGateway   = $this->getMockBuilder('Laminas\Db\TableGateway\TableGateway')
                                      ->disableOriginalConstructor()
                                      ->getMock();
     }

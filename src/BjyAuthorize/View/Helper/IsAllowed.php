@@ -8,7 +8,7 @@
 
 namespace BjyAuthorize\View\Helper;
 
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 use BjyAuthorize\Service\Authorize;
 
 /**

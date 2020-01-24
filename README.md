@@ -15,16 +15,16 @@ As long-term support for Zend Framework 2 ended on 2018-03-31, any users who cur
 [![Latest Unstable Version](https://poser.pugx.org/bjyoungblood/bjy-authorize/v/unstable.png)](https://packagist.org/packages/bjyoungblood/bjy-authorize)
 [![Dependency Status](https://www.versioneye.com/package/php--bjyoungblood--bjy-authorize/badge.png)](https://www.versioneye.com/package/php--bjyoungblood--bjy-authorize)
 
-This module is designed to provide a facade for `Zend\Permissions\Acl` that will
+This module is designed to provide a facade for `Laminas\Permissions\Acl` that will
 ease its usage with modules and applications. By default, it provides simple
-setup via config files or by using `Zend\Db` or Doctrine ORM/ODM (via ZfcUserDoctrineORM).
+setup via config files or by using `Laminas\Db` or Doctrine ORM/ODM (via ZfcUserDoctrineORM).
 
 ## What does BjyAuthorize do?
 
 BjyAuthorize adds event listeners to your application so that you have a "security" or "firewall" that disallows
 unauthorized access to your controllers or routes.
 
-This is what a normal `Zend\Mvc` application workflow would look like:
+This is what a normal `Laminas\Mvc` application workflow would look like:
 
 ![Zend Mvc Application workflow](http://yuml.me/diagram/plain;/activity/%28start%29-%3E%28route%29%2C%20%28route%29-%3E%28get%20controller%29%2C%20%28get%20controller%29-%3E%28dispatch%29%2C%20%28dispatch%29-%3E%28end%29)
 
@@ -51,7 +51,7 @@ php composer.phar require zf-commons/zfc-user:0.1.*
 
 ## Configuration
 
-Following steps apply if you want to use `ZfcUser` with `Zend\Db`. If you want to use Doctrine ORM/ODM, you should
+Following steps apply if you want to use `ZfcUser` with `Laminas\Db`. If you want to use Doctrine ORM/ODM, you should
 also check the [doctrine documentation](https://github.com/bjyoungblood/BjyAuthorize/blob/master/docs/doctrine.md).
 
  1. Ensure that following modules are enabled in your `application.config.php` file in the this order:
@@ -95,7 +95,7 @@ return [
         /* role providers simply provide a list of roles that should be inserted
          * into the Zend\Acl instance. the module comes with two providers, one
          * to specify roles in a config file and one to load roles using a
-         * Zend\Db adapter.
+         * Laminas\Db adapter.
          */
         'role_providers' => [
 

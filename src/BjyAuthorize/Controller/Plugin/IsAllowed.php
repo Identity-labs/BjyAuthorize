@@ -8,7 +8,7 @@
 
 namespace BjyAuthorize\Controller\Plugin;
 
-use Zend\Mvc\Controller\Plugin\AbstractPlugin;
+use Laminas\Mvc\Controller\Plugin\AbstractPlugin;
 use BjyAuthorize\Service\Authorize;
 
 /**

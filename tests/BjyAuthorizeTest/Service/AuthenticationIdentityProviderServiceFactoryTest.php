@@ -33,8 +33,8 @@ class AuthenticationIdentityProviderServiceFactoryTest extends PHPUnit_Framework
         );
 
         $user           = $this->getMock('ZfcUser\\Service\\User', array('getAuthService'));
-        $auth           = $this->getMock('Zend\\Authentication\\AuthenticationService');
-        $serviceLocator = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $auth           = $this->getMock('Laminas\\Authentication\\AuthenticationService');
+        $serviceLocator = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
 
         $user->expects($this->once())->method('getAuthService')->will($this->returnValue($auth));
         $serviceLocator

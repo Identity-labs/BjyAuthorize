@@ -26,7 +26,7 @@ class UnauthorizedStrategyServiceFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateService()
     {
         $factory          = new UnauthorizedStrategyServiceFactory();
-        $serviceLocator   = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $serviceLocator   = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
         $config           = array(
             'template' => 'foo/bar',
         );

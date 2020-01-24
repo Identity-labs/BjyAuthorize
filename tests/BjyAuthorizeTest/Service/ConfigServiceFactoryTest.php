@@ -26,7 +26,7 @@ class ConfigServiceFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateService()
     {
         $factory        = new ConfigServiceFactory();
-        $serviceLocator = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $serviceLocator = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
 
         $serviceLocator
             ->expects($this->any())

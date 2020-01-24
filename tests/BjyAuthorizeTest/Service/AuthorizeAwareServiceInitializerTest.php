@@ -41,7 +41,7 @@ class AuthorizeAwareServiceInitializerTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->authorize   = $this->getMock('BjyAuthorize\\Service\\Authorize', array(), array(), '', false);
-        $this->locator     = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $this->locator     = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
         $this->initializer = new AuthorizeAwareServiceInitializer();
 
         $this->locator->expects($this->any())->method('get')->will($this->returnValue($this->authorize));

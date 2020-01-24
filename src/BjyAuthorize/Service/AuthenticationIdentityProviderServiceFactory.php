@@ -10,8 +10,8 @@
 namespace BjyAuthorize\Service;
 
 use BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Simple authentication provider factory

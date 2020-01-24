@@ -12,14 +12,14 @@ use BjyAuthorize\Provider\Role\ProviderInterface as RoleProvider;
 use BjyAuthorize\Provider\Resource\ProviderInterface as ResourceProvider;
 use BjyAuthorize\Provider\Rule\ProviderInterface as RuleProvider;
 use BjyAuthorize\Provider\Identity\ProviderInterface as IdentityProvider;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Permissions\Acl\Acl;
-use Zend\Permissions\Acl\Exception\InvalidArgumentException;
-use Zend\Permissions\Acl\Resource\GenericResource;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\Permissions\Acl\Acl;
+use Laminas\Permissions\Acl\Exception\InvalidArgumentException;
+use Laminas\Permissions\Acl\Resource\GenericResource;
 use BjyAuthorize\Acl\Role;
 use BjyAuthorize\Guard\GuardInterface;
-use Zend\Permissions\Acl\Resource\ResourceInterface;
-use Zend\Cache\Storage\StorageInterface;
+use Laminas\Permissions\Acl\Resource\ResourceInterface;
+use Laminas\Cache\Storage\StorageInterface;
 
 /**
  * Authorize service
@@ -68,7 +68,7 @@ class Authorize
     protected $loaded;
 
     /**
-     * @var \Zend\ServiceManager\ServiceLocatorInterface
+     * @var \Laminas\ServiceManager\ServiceLocatorInterface
      */
     protected $serviceLocator;
 
@@ -79,7 +79,7 @@ class Authorize
 
     /**
      * @param array                                         $config
-     * @param \Zend\ServiceManager\ServiceLocatorInterface  $serviceLocator
+     * @param \Laminas\ServiceManager\ServiceLocatorInterface  $serviceLocator
      */
     public function __construct(array $config, ServiceLocatorInterface $serviceLocator)
     {
@@ -285,7 +285,7 @@ class Authorize
     /**
      * @deprecated this method will be removed in BjyAuthorize 2.0.x
      *
-     * @param \Zend\Permissions\Acl\Role\RoleInterface[] $roles
+     * @param \Laminas\Permissions\Acl\Role\RoleInterface[] $roles
      */
     protected function addRoles($roles)
     {
@@ -311,7 +311,7 @@ class Authorize
     /**
      * @deprecated this method will be removed in BjyAuthorize 2.0.x
      *
-     * @param string[]|\Zend\Permissions\Acl\Resource\ResourceInterface[] $resources
+     * @param string[]|\Laminas\Permissions\Acl\Resource\ResourceInterface[] $resources
      * @param mixed|null                                                  $parent
      */
     protected function loadResource($resources, $parent = null)

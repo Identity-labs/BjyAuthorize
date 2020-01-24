@@ -9,9 +9,9 @@
 namespace BjyAuthorize\Service;
 
 use BjyAuthorize\Provider\Identity\ZfcUserZendDb;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Factory responsible of instantiating {@see \BjyAuthorize\Provider\Identity\ZfcUserZendDb}
@@ -27,7 +27,7 @@ class ZfcUserZendDbIdentityProviderServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /* @var $tableGateway \Zend\Db\TableGateway\TableGateway */
+        /* @var $tableGateway \Laminas\Db\TableGateway\TableGateway */
         $tableGateway = new TableGateway('user_role_linker', $serviceLocator->get('zfcuser_zend_db_adapter'));
         /* @var $userService \ZfcUser\Service\User */
         $userService = $serviceLocator->get('zfcuser_user_service');

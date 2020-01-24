@@ -19,7 +19,7 @@ use BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider;
 class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend\Authentication\AuthenticationService|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\Authentication\AuthenticationService|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $authService;
 
@@ -35,7 +35,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->authService = $this->getMock('Zend\Authentication\AuthenticationService');
+        $this->authService = $this->getMock('Laminas\Authentication\AuthenticationService');
         $this->provider    = new AuthenticationIdentityProvider($this->authService);
     }
 
@@ -72,7 +72,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
     {
         $this->authService->expects($this->once())->method('getIdentity')->will($this->returnValue('foo'));
 
-        $authorizedRole = $this->getMock('Zend\Permissions\Acl\Role\RoleInterface', array('getRoleId'));
+        $authorizedRole = $this->getMock('Laminas\Permissions\Acl\Role\RoleInterface', array('getRoleId'));
 
         $this->provider->setAuthenticatedRole($authorizedRole);
 
@@ -86,7 +86,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
     {
         $this->authService->expects($this->once())->method('getIdentity')->will($this->returnValue(null));
 
-        $defaultRole = $this->getMock('Zend\Permissions\Acl\Role\RoleInterface', array('getRoleId'));
+        $defaultRole = $this->getMock('Laminas\Permissions\Acl\Role\RoleInterface', array('getRoleId'));
 
         $this->provider->setDefaultRole($defaultRole);
 
@@ -98,8 +98,8 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testGetIdentityRolesRetrievesRolesFromIdentityThatIsARoleProvider()
     {
-        $role1 = $this->getMock('Zend\Permissions\Acl\Role\RoleInterface');
-        $role2 = $this->getMock('Zend\Permissions\Acl\Role\RoleInterface');
+        $role1 = $this->getMock('Laminas\Permissions\Acl\Role\RoleInterface');
+        $role2 = $this->getMock('Laminas\Permissions\Acl\Role\RoleInterface');
         $user  = $this->getMock('BjyAuthorize\Provider\Role\ProviderInterface');
 
         $user->expects($this->once())
@@ -122,7 +122,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testGetIdentityRolesRetrievesIdentityThatIsARole()
     {
-        $user = $this->getMock('Zend\Permissions\Acl\Role\RoleInterface');
+        $user = $this->getMock('Laminas\Permissions\Acl\Role\RoleInterface');
 
         $this->authService->expects($this->any())
             ->method('getIdentity')
@@ -141,7 +141,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
         $this->provider->setAuthenticatedRole('test');
         $this->assertSame('test', $this->provider->getAuthenticatedRole());
 
-        $role = $this->getMock('Zend\\Permissions\\Acl\\Role\\RoleInterface');
+        $role = $this->getMock('Laminas\\Permissions\\Acl\\Role\\RoleInterface');
         $this->provider->setAuthenticatedRole($role);
         $this->assertSame($role, $this->provider->getAuthenticatedRole());
 
@@ -159,7 +159,7 @@ class AuthenticationIdentityProviderTest extends PHPUnit_Framework_TestCase
         $this->provider->setDefaultRole('test');
         $this->assertSame('test', $this->provider->getDefaultRole());
 
-        $role = $this->getMock('Zend\\Permissions\\Acl\\Role\\RoleInterface');
+        $role = $this->getMock('Laminas\\Permissions\\Acl\\Role\\RoleInterface');
         $this->provider->setDefaultRole($role);
         $this->assertSame($role, $this->provider->getDefaultRole());
 

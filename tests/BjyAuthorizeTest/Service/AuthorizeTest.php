@@ -10,7 +10,7 @@ namespace BjyAuthorizeTest\Service;
 
 use BjyAuthorize\Service\Authorize;
 use PHPUnit_Framework_TestCase;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Test for {@see \BjyAuthorize\Service\Authorize}
@@ -23,7 +23,7 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $cache = $this->getMockBuilder('Zend\Cache\Storage\Adapter\Filesystem')
+        $cache = $this->getMockBuilder('Laminas\Cache\Storage\Adapter\Filesystem')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -68,9 +68,9 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadLoadsAclFromCacheAndDoesNotBuildANewAclObject()
     {
-        $acl = $this->getMock('Zend\Permissions\Acl\Acl');
+        $acl = $this->getMock('Laminas\Permissions\Acl\Acl');
 
-        $cache = $this->getMockBuilder('Zend\Cache\Storage\Adapter\Filesystem')
+        $cache = $this->getMockBuilder('Laminas\Cache\Storage\Adapter\Filesystem')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -110,7 +110,7 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
      */
     public function testLoadWritesAclToCacheIfCacheIsEnabledButAclIsNotStoredInCache()
     {
-        $cache = $this->getMockBuilder('Zend\Cache\Storage\Adapter\Filesystem')
+        $cache = $this->getMockBuilder('Laminas\Cache\Storage\Adapter\Filesystem')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -167,7 +167,7 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
             ->method('getResources')
             ->will(
                 $this->returnValue(
-                    array(new \Zend\Permissions\Acl\Resource\GenericResource('test'))
+                    array(new \Laminas\Permissions\Acl\Resource\GenericResource('test'))
                 )
             );
 
@@ -211,7 +211,7 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
             ->method('getResources')
             ->will(
                 $this->returnValue(
-                    new \Zend\Stdlib\ArrayObject(array('test'))
+                    new \Laminas\Stdlib\ArrayObject(array('test'))
                 )
             );
 
@@ -298,7 +298,7 @@ class AuthorizeTest extends PHPUnit_Framework_TestCase
             ->method('getRoles')
             ->will(
                 $this->returnValue(
-                    new \Zend\Stdlib\ArrayObject(array(new \BjyAuthorize\Acl\Role('test')))
+                    new \Laminas\Stdlib\ArrayObject(array(new \BjyAuthorize\Acl\Role('test')))
                 )
             );
 

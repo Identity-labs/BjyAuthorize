@@ -26,7 +26,7 @@ class ConfigRoleProviderServiceFactoryTest extends PHPUnit_Framework_TestCase
     public function testCreateService()
     {
         $factory          = new ConfigRoleProviderServiceFactory();
-        $serviceLocator   = $this->getMock('Zend\\ServiceManager\\ServiceLocatorInterface');
+        $serviceLocator   = $this->getMock('Laminas\\ServiceManager\\ServiceLocatorInterface');
         $config           = array(
             'role_providers' => array(
                 'BjyAuthorize\Provider\Role\Config' => array(),

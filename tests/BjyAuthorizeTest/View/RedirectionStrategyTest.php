@@ -11,8 +11,8 @@ namespace BjyAuthorizeTest\View;
 use BjyAuthorize\Guard\Route;
 use PHPUnit_Framework_TestCase;
 use BjyAuthorize\View\RedirectionStrategy;
-use Zend\Http\Response;
-use Zend\Mvc\Application;
+use Laminas\Http\Response;
+use Laminas\Mvc\Application;
 
 /**
  * UnauthorizedStrategyTest view strategy test
@@ -42,8 +42,8 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testAttachDetach()
     {
-        $eventManager = $this->getMock('Zend\\EventManager\\EventManagerInterface');
-        $callbackMock = $this->getMock('Zend\\Stdlib\\CallbackHandler', array(), array(), '', false);
+        $eventManager = $this->getMock('Laminas\\EventManager\\EventManagerInterface');
+        $callbackMock = $this->getMock('Laminas\\Stdlib\\CallbackHandler', array(), array(), '', false);
         $eventManager
             ->expects($this->once())
             ->method('attach')
@@ -63,9 +63,9 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testWillIgnoreUnrecognizedResponse()
     {
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Stdlib\\ResponseInterface');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Stdlib\\ResponseInterface');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getRouteMatch')->will($this->returnValue($routeMatch));
@@ -80,10 +80,10 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testWillIgnoreUnrecognizedErrorType()
     {
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
-        $route        = $this->getMock('Zend\\Mvc\\Router\\RouteInterface');
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $route        = $this->getMock('Laminas\\Mvc\\Router\\RouteInterface');
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getRouteMatch')->will($this->returnValue($routeMatch));
@@ -99,9 +99,9 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testWillIgnoreOnExistingResult()
     {
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
 
         $mvcEvent->expects($this->any())->method('getResult')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
@@ -117,8 +117,8 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
      */
     public function testWillIgnoreOnMissingRouteMatch()
     {
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getError')->will($this->returnValue(Route::ERROR));
@@ -137,11 +137,11 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
         $this->strategy->setRedirectRoute('redirect/route');
         $this->strategy->setRedirectUri(null);
 
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
-        $route        = $this->getMock('Zend\\Mvc\\Router\\RouteInterface');
-        $headers      = $this->getMock('Zend\\Http\\Headers');
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $route        = $this->getMock('Laminas\\Mvc\\Router\\RouteInterface');
+        $headers      = $this->getMock('Laminas\\Http\\Headers');
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getRouteMatch')->will($this->returnValue($routeMatch));
@@ -172,11 +172,11 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
     {
         $this->strategy->setRedirectUri('http://www.example.org/');
 
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
-        $route        = $this->getMock('Zend\\Mvc\\Router\\RouteInterface');
-        $headers      = $this->getMock('Zend\\Http\\Headers');
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $route        = $this->getMock('Laminas\\Mvc\\Router\\RouteInterface');
+        $headers      = $this->getMock('Laminas\\Http\\Headers');
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));
         $mvcEvent->expects($this->any())->method('getRouteMatch')->will($this->returnValue($routeMatch));
@@ -201,11 +201,11 @@ class RedirectionStrategyTest extends PHPUnit_Framework_TestCase
     {
         $this->strategy->setRedirectUri('http://www.example.org/');
 
-        $mvcEvent     = $this->getMock('Zend\\Mvc\\MvcEvent');
-        $response     = $this->getMock('Zend\\Http\\Response');
-        $routeMatch   = $this->getMock('Zend\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
-        $route        = $this->getMock('Zend\\Mvc\\Router\\RouteInterface');
-        $headers      = $this->getMock('Zend\\Http\\Headers');
+        $mvcEvent     = $this->getMock('Laminas\\Mvc\\MvcEvent');
+        $response     = $this->getMock('Laminas\\Http\\Response');
+        $routeMatch   = $this->getMock('Laminas\\Mvc\\Router\\RouteMatch', array(), array(), '', false);
+        $route        = $this->getMock('Laminas\\Mvc\\Router\\RouteInterface');
+        $headers      = $this->getMock('Laminas\\Http\\Headers');
         $exception    = $this->getMock('BjyAuthorize\\Exception\\UnAuthorizedException');
 
         $mvcEvent->expects($this->any())->method('getResponse')->will($this->returnValue($response));

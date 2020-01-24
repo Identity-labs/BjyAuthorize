@@ -19,7 +19,7 @@ use BjyAuthorize\Provider\Identity\ZfcUserZendDb;
 class ZfcUserZendDbTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Zend\Authentication\AuthenticationService|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\Authentication\AuthenticationService|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $authService;
 
@@ -29,7 +29,7 @@ class ZfcUserZendDbTest extends PHPUnit_Framework_TestCase
     protected $userService;
 
     /**
-     * @var \Zend\Db\TableGateway\TableGateway|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Laminas\Db\TableGateway\TableGateway|\PHPUnit_Framework_MockObject_MockObject
      */
     private $tableGateway;
 
@@ -45,9 +45,9 @@ class ZfcUserZendDbTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->authService  = $this->getMock('Zend\Authentication\AuthenticationService');
+        $this->authService  = $this->getMock('Laminas\Authentication\AuthenticationService');
         $this->userService  = $this->getMock('ZfcUser\Service\User');
-        $this->tableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array(), array(), '', false);
+        $this->tableGateway = $this->getMock('Laminas\Db\TableGateway\TableGateway', array(), array(), '', false);
 
         $this
             ->userService
@@ -77,7 +77,7 @@ class ZfcUserZendDbTest extends PHPUnit_Framework_TestCase
         $this->provider->setDefaultRole('test');
         $this->assertSame('test', $this->provider->getDefaultRole());
 
-        $role = $this->getMock('Zend\\Permissions\\Acl\\Role\\RoleInterface');
+        $role = $this->getMock('Laminas\\Permissions\\Acl\\Role\\RoleInterface');
         $this->provider->setDefaultRole($role);
         $this->assertSame($role, $this->provider->getDefaultRole());
 
